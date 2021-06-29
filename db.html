@@ -6,8 +6,326 @@
 		<meta name="Keywords" content="매일성경 오늘의 말씀">
 		<meta name="Description" content="매일성경 오늘의 말씀">
 		<title>매일성경 오늘의 말씀</title>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+		<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+
+		<script>
+			$( function() {
+				$( ".datepicker" ).datepicker({dateFormat: "yy-mm-dd"});
+			} );
+		</script>
+
+		<script>
+			var date;
+			var bibleType = "QT1"; // QT1 개정 / QT2 쉬운성경 / QT6 새번역 / QT5 영어
+			var proxy4ChromeCORS = "";
+			var textArray = ['복된','은혜로운','즐거운','감사하는'];
+			var liturgicalYear = new Map();	// 교회력
+				liturgicalYear.set("2021.01.03",{title:"신년감사주일",msg:"감사하는"});
+				liturgicalYear.set("2021.02.07",{title:"이단경계주일",msg:"복된"});
+				liturgicalYear.set("2021.03.28",{title:"종려주일",msg:"감사하는"});
+				liturgicalYear.set("2021.03.29",{title:"고난주간",msg:"감사하는"});
+				liturgicalYear.set("2021.03.30",{title:"고난주간",msg:"감사하는"});
+				liturgicalYear.set("2021.03.31",{title:"고난주간",msg:"감사하는"});
+				liturgicalYear.set("2021.04.01",{title:"고난주간",msg:"감사하는"});
+				liturgicalYear.set("2021.04.02",{title:"고난주간",msg:"감사하는"});
+				liturgicalYear.set("2021.04.03",{title:"고난주간",msg:"감사하는"});
+				liturgicalYear.set("2021.04.04",{title:"부활주일",msg:"감사하는"});
+				liturgicalYear.set("2021.04.18",{title:"장애인주일",msg:"은혜로운"});
+				liturgicalYear.set("2021.05.02",{title:"어린이주일",msg:"즐거운"});
+				liturgicalYear.set("2021.05.09",{title:"어버이주일",msg:"감사하는"});
+				liturgicalYear.set("2021.05.23",{title:"성령강림절",msg:"감사하는"});
+				liturgicalYear.set("2021.06.07",{title:"저희 집이 이사하는 날",msg:"은혜 속에서 이사 무사히 마치기를, 새로운 곳에서 더 큰 은혜 받을 수 있도록 중보기도를 부탁드립니다. 감사하는"});
+				liturgicalYear.set("2021.06.20",{title:"순교자기념주일",msg:"감사하는"});
+				liturgicalYear.set("2021.06.21",{title:"순교자기념주간",msg:"감사하는"});
+				liturgicalYear.set("2021.06.22",{title:"순교자기념주간",msg:"감사하는"});
+				liturgicalYear.set("2021.06.23",{title:"순교자기념주간",msg:"감사하는"});
+				liturgicalYear.set("2021.06.24",{title:"순교자기념주간",msg:"감사하는"});
+				liturgicalYear.set("2021.06.25",{title:"순교자기념주간",msg:"감사하는"});
+				liturgicalYear.set("2021.06.26",{title:"순교자기념주간",msg:"감사하는"});
+				liturgicalYear.set("2021.07.04",{title:"맥추감사주일",msg:"감사하는"});
+				liturgicalYear.set("2021.09.05",{title:"이단경계주일",msg:"복된"});
+				liturgicalYear.set("2021.10.31",{title:"종교개혁주일",msg:"은혜로운"});
+				liturgicalYear.set("2021.11.21",{title:"추수감사주일",msg:"감사하는"});
+				liturgicalYear.set("2021.12.12",{title:"성서주일",msg:"감사하는"});
+				liturgicalYear.set("2021.12.25",{title:"성탄절",msg:"복된"});
+				liturgicalYear.set("2021.12.31",{title:"송구영신예배",msg:"감사하는"});
+
+				liturgicalYear.set("2021.01.01",{title:"새해 첫날",msg:"복된"});
+				liturgicalYear.set("2021.02.12",{title:"설날",msg:"즐겁고 복된"});
+				liturgicalYear.set("2021.03.01",{title:"삼일절",msg:"호국 영령들을 기리는"});
+				liturgicalYear.set("2021.06.06",{title:"현충일",msg:"호국 영령들을 기리는"});
+				liturgicalYear.set("2021.08.15",{title:"광복절",msg:"순국 선열들의 숭고한 애국정신을 기리는"});
+				liturgicalYear.set("2021.09.21",{title:"추석",msg:"즐겁고 복된"});
+
+			function getDateInfo() {
+				$.ajax( {
+					type:'POST',
+					contentType:"application/json;charset=utf-8",
+					url:proxy4ChromeCORS+"https://sum.su.or.kr:8888/Ajax/Bible/BodyTop",
+					data:"{'qt_ty':'" + bibleType + "','Base_de':'"+date+"'}",
+					crossOrigin:true,
+					dataType:'JSON',
+					success:function(response) {
+						if(response != null) {
+							$('#bible_date').html("");
+							$('#bible_date').append(response.BibleDay + "(" + response.BibleDateGetWeek + ")");
+
+							var toDate = response.BibleDay.split(".");
+							var isSunday = ('일' == response.BibleDateGetWeek);
+							var randomNumber = Math.floor(Math.random()*textArray.length);
+
+							var headerMessage = toDate[0] + "년 " + toDate[1] + "월 " + toDate[2] + "일 " + response.BibleDateGetWeek + "요일입니다. ";
+							var titleMessage = "";
+							var contentMessage = textArray[(isSunday? 1 : randomNumber)];
+							var footerMessage = ((isSunday? " 주일" : " 하루") + " 맞이하시길 바라며 오늘의 말씀을 전해드립니다.");
+
+							if(liturgicalYear.has(response.BibleDay)) {
+								titleMessage = "오늘은 " + liturgicalYear.get(response.BibleDay).title + "입니다. ";
+								contentMessage = liturgicalYear.get(response.BibleDay).msg;
+							}
+							$('#to_date').html(headerMessage+titleMessage+contentMessage+footerMessage);
+
+							getHeader();
+						}
+					},
+					error:function(err) {
+						var err1 = err;
+					}
+				});
+			}
+			function getHeader() {
+				$('#subject').html("");
+				$.ajax({
+					type:'POST',
+					contentType:"application/json;charset=utf-8",
+					url:proxy4ChromeCORS+"https://sum.su.or.kr:8888/Ajax/Bible/BodyMatterDetail",
+					data:"{'qt_ty':'" + bibleType + "','Base_de':'"+date+"'}",
+					dataType:'JSON',
+					success:function (response) {
+						if(response != null) {
+							if((response.Qt_sj != '') & (response.Qt_sj != null)) {
+								$('#subject').append(response.Qt_sj.trim());
+							}
+
+							$('#bible_date').append(' : ');
+							$('#bible_date').append('[');
+							$('#bible_date').append(response.Bible_name.trim());
+							$('#bible_date').append(' ');
+							$('#bible_date').append(response.Bible_chapter.trim());
+							switch(bibleType) {	// QT1 개정 / QT2 쉬운성경 / QT6 새번역 / QT5 영어
+								case 'QT1' : $('#bible_date').append(' 개정개역');break;
+								case 'QT2' : $('#bible_date').append(' 쉬운성경');break;
+								case 'QT6' : $('#bible_date').append(' 새번역');break;
+								case 'QT5' : $('#bible_date').append(' 영어');break;
+							}
+							$('#bible_date').append(']');
+							$('#bible_date').append(' 찬송가 ');
+							$('#bible_date').append(response.New_song);
+							$('#bible_date').append('장');
+
+							getBody();
+						}
+					},
+					error:function (err) {
+						var err1 = err;
+						}
+					});
+			}
+			function getBody() {
+				$.ajax({
+					type:'POST',
+					contentType:"application/json;charset=utf-8",
+					url:proxy4ChromeCORS+"https://sum.su.or.kr:8888/Ajax/Bible/BodyBible",
+					data:"{'qt_ty':'"+bibleType+"','Base_de':'"+date+"'}",	
+					dataType:'JSON',
+					success:function (response) {
+						if(response != null) {
+							var str = "";
+							$('#bible_body_list').html("");
+							for (var i = 0; i < response.length; i++) {
+								str = str + response[i].Chapter + ":" + response[i].Verse + ":" + response[i].Bible_Cn.trim() + "<br>";
+							};
+							$('#bible_body_list').append(str);
+							getCommentary();
+						}
+					},
+					error:function (err) {
+						var err1 = err;
+						}
+					});
+			}
+			function getCommentary() {
+				$('#Qt_Brf').html("");		// 해설
+				$('#Qt_q1_str').html("");	// 하나님은 어떤 분입니까?
+				$('#Qt_q2_str').html("");	// 내게 주시는 교훈은 무엇입니까?
+				$('#Qt_q3_str').html("");	// 기도
+				$('#end_str').html("");	// 아멘
+
+				var briefType = "QT1"; // QT1 개정 / QT2 쉬운성경 / QT6 새번역 / QT5 영어
+
+				$.ajax( {
+					type:'POST',
+					contentType:"application/json;charset=utf-8",
+					url:proxy4ChromeCORS+"https://sum.su.or.kr:8888/Ajax/Bible/BodyBibleCont",
+					data:"{'qt_ty':'"+briefType+"','Base_de':'"+date+"','Bibletype':'1'}",
+					dataType:'JSON',
+					success:function(response) {
+						if(response != null) {
+							var str = "";
+								// 해설
+								if((response.Qt_Brf != '') && (response.Qt_Brf != null)) {
+									$('#Qt_Brf').append(response.Qt_Brf.trim());
+								}
+								// 하나님은 어떤 분입니까?
+								if((response.Qt_a1 != '') && (response.Qt_a1 != null)) {
+									$('#Qt_q1_str').html('['+response.Qt_q1_str+']<br>');
+									$('#Qt_q1_str').append(response.Qt_a1.trim());
+								}
+								// 내게 주시는 교훈은 무엇입니까?
+								if((response.Qt_a2 != '') && (response.Qt_a2 != null)) {
+									$('#Qt_q2_str').html('['+response.Qt_q2_str+']<br>');
+									$('#Qt_q2_str').append(response.Qt_a2.trim());
+								}
+/*								// 기도
+								if((response.Qt_a3 != '') & (response.Qt_a3 != null)) {
+									$('#Qt_q3_str').html('['+response.Qt_q3_str+']<br>');
+									$('#Qt_q3_str').append(response.Qt_a3.trim());
+								}
+*/
+								$('#end_str').append('아멘!');
+//								startDate = new Date(startDate.setDate(startDate.getDate() + 1)); //date increase by 1
+						}
+					},
+					error:function (err) {
+						var err1 = err;
+						}
+					});
+			}
+			function getBible() {
+//				startDate = new Date("2019-03-05");// startDate = new Date();
+//				endDate = new Date(startDate.setDate(startDate.getDate() + 7));
+
+				getDateInfo();
+			}
+			function init(diff) {
+				var isChrome = window.navigator.userAgent.indexOf('Chrome') > 0;
+				if(isChrome) {
+					proxy4ChromeCORS = "https://cors-anywhere.herokuapp.com/";
+				}
+
+				if(diff) {
+					switch(diff) {	// today, prev, next
+						case 'today' : 
+							contentsDate = new Date();
+							diff = 0;
+							break;
+						case 'prev' : 
+							contentsDate = new Date($('#bibleDate').val());
+							diff = -1;
+							break;
+						case 'next' : 
+							contentsDate = new Date($('#bibleDate').val());
+							diff = 1;
+							break;
+					}
+					contentsDate.setDate(contentsDate.getDate() + diff);
+					contentsDate.setMinutes(contentsDate.getMinutes() - contentsDate.getTimezoneOffset());
+					date = contentsDate.toISOString().slice(0,10);
+
+					$('#bibleDate').val(date);
+				}
+				else {
+					if($('#bibleDate').val().replace(/\s/g,"") == ""){
+						var contentsDate = new Date();
+						contentsDate.setMinutes(contentsDate.getMinutes() - contentsDate.getTimezoneOffset());
+						date = contentsDate.toISOString().slice(0,10);
+
+						$('#bibleDate').val(date);
+					}
+					else {
+						date = $('#bibleDate').val();
+					}
+				}
+				bibleType = $('input:radio[name="checkedBibleType"]:checked').val();
+				getBible();
+			}
+
+			function contentsCopy() {
+				var copyDivArea = document.getElementById("Contents");
+				var copyText = copyDivArea.innerText;
+
+				while(copyText.indexOf('\n ') > 0) {
+					copyText = copyText.replace(/\n /g, "\n");//행바꿈 뒤에 빈칸제거
+				}
+				if(copyText.indexOf('\n\r\n\r') > 0) {
+					while(copyText.indexOf('\n\r\n\r') > 0) {
+						copyText = copyText.replace(/\n\r\n\r/g, "\n\r");//두개의 행바꿈을 하나로
+					}
+				}
+				else if(copyText.indexOf('\n\n\n') > 0) {
+					while(copyText.indexOf('\n\n\n') > 0) {
+						copyText = copyText.replace(/\n\n\n/g, "\n\n");//두개의 행바꿈을 하나로
+					}
+				}
+
+				var $temp = $("<textarea id='a1'>");
+				$("body").append($temp);
+				// $temp.css('display', 'none'); // ie에서 안됨
+				$temp.val(copyText).select();
+				document.execCommand("copy");
+				$temp.remove();
+				$('html').scrollTop(0);
+			}
+			function CopyAndNext() {
+				contentsCopy();
+				init('next');
+			}
+			function googleTTS() {
+/*
+				$.ajax( {
+					type:'POST',
+					contentType:"application/json;charset=utf-8",
+					url:"https://texttospeech.googleapis.com/v1beta1/text:synthesize",
+					data:"{'audioConfig':{'audioEncoding': 'LINEAR16', 'pitch': 0, 'speakingRate': 1 },'input':{'text':'안녕하세요'},'voice':{'languageCode':'ko-KR','name':'ko-KR-Wavenet-B'}}",
+					dataType:'JSON',
+					success:function(response) {
+						var err1 = err;
+					},
+					error:function (err) {
+						var err1 = err;
+					}
+					});
+*/
+			}
+
+			function isNotEmpty (_str){
+				obj = String(_str);
+				if(obj == null || obj == undefined || obj == 'null' || obj == 'undefined' || obj == '' ) return false;
+				else return true;
+			}
+
+			function isEmpty (_str){
+				return !isNotEmpty(_str);
+			}
+
+		</script>
 	</head>
-	<body>
+	<body id=myBody onload=init()>
+		<a href="#" onClick=init('prev')><i class="fas fa-arrow-left"></i></a>
+		<input type=text class='datepicker' id='bibleDate' value=''><input type=button value='GO' onclick=init()>
+		<a href="#" onClick=init('next')><i class="fas fa-arrow-right"></i></a>
+		<a href="#" onClick=init('today')><i class="fas fa-calendar-day"></i></a>
+		<button type="button" onClick=contentsCopy()>Copy</button>
+		<button type="button" onClick=CopyAndNext()>Copy&Next</button>
+		<button type="button" onClick=googleTTS() style="display:none">TTS</button>
+		<input type=radio name=checkedBibleType value='QT1'>개정개역
+		<input type=radio name=checkedBibleType value='QT2' checked>쉬운성경
+		<input type=radio name=checkedBibleType value='QT6'>새번역
+		<input type=radio name=checkedBibleType value='QT5'>영어
+
 		<br>
 		<div id='Contents'>
 		<div id='to_date'></div><br>
