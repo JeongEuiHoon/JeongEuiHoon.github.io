@@ -37,7 +37,9 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 		<script src="https://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
 
 		<!-- script type="text/javascript" src="jquery.ajax-cross-origin.min.js"></script -->
+		<!-- CORS 된다고 했지만, 안됨. 241라인의 cors.bridged.cc를 프록시로 이용해서 제공 -->
 
+		<!-- 달력 표시를 위한 datepicker -->
 		<script>
 			$( function() {
 				$( ".datepicker" ).datepicker({dateFormat: "yy-mm-dd"});
@@ -45,11 +47,11 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 		</script>
 
 		<script>
-			var date;
+			var date;	// 말씀 날짜
 			var bibleType = "QT1"; // QT1 개정 / QT2 쉬운성경 / QT6 새번역 / QT5 영어
-			var proxy4ChromeCORS = "";
-			var textArray = ['복된','은혜로운','즐거운','감사하는'];
-			var liturgicalYear = new Map();	// 교회력
+			var proxy4ChromeCORS = "";	// 크롬에서 CORS 회피를 위한 proxy. IE에서는 필요없음
+			var textArray = ['복된','은혜로운','즐거운','감사하는'];	// 평일 문구에 표시되는 형용사
+			var liturgicalYear = new Map();	// 교회력, title : 교회력 명칭, msg : 교회력날에 표시되는 형용사
 				liturgicalYear.set("2021.01.03",{title:"신년감사주일",msg:"감사하는"});
 				liturgicalYear.set("2021.02.07",{title:"이단경계주일",msg:"복된"});
 				liturgicalYear.set("2021.03.28",{title:"종려주일",msg:"감사하는"});
@@ -241,7 +243,8 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 				var isChrome = window.navigator.userAgent.indexOf('Chrome') > 0;
 				if(isChrome) {
 //					proxy4ChromeCORS = "https://cors-anywhere.herokuapp.com/";
-//					proxy4ChromeCORS = "https://cors.bridged.cc/";
+// cors-anywhere.herokuapp.com 동작 안해서 cors.bridged.cc로 교체
+					proxy4ChromeCORS = "https://cors.bridged.cc/";
 				}
 
 				if(diff) {
