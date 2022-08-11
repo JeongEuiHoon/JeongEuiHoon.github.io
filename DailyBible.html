@@ -2,27 +2,25 @@
 <!-- 
 http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 
-※ 2021 교회절기 및 행사
-신년감사주일 1. 3
-이단경계주일 2. 7
-종려주일 3. 28
-고난주간 3. 29 ~ 4. 3
-부활주일 4. 4
-장애인주일 4. 18
-어린이주일 5. 2
-어버이주일 5. 9
-성령강림절 5. 23
-순교자기념주일 6. 20
-순교자기념주간 6. 21 ~ 26
-맥추감사주일 7. 4
-총회설립기념일 9. 1
-이단경계주일 9. 5
-종교개혁주일 10. 31
-추수감사주일 11. 21
-성서주일 12. 12
-성탄절 12. 25
-송구영신예배 12. 31
-총회개회 예정일 9월 3째주간(예정은 변할수 있습니다)
+※ 2022 교회절기 및 행사
+신년감사주일 1월 2일
+이단경계주일 2월 6일
+종려주일 4월 10일
+고난주간 4월 11일~16일
+부활주일 4월 17일
+장애인주일 4월 17일
+어린이주일 5월 1일
+어버이주일 5월 8일
+성령강림절 6월 5일
+순교자기념주일 6월 19일
+순교자기념주간 6월 20일~25일
+맥추감사주일 7월 3일
+이단경계주일 9월 4일
+종교개혁주일 10월 30일
+추수감사주일 11월 20일
+성서주일 12월 11일
+성탄절 12월 25일
+송구영신예배 12월 31일
 -->
 <html lang="en">
 	<head>
@@ -31,7 +29,7 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 		<meta name="Keywords" content="매일성경 오늘의 말씀">
 		<meta name="Description" content="매일성경 오늘의 말씀">
 		<title>매일성경 오늘의 말씀</title>
-		<link rel="shortcut icon" href="DailyBibleLogo2.png">
+		<link rel="shortcut icon" href="https://sum.su.or.kr:8888/Themes/main/images/logo2.png">
 		<link rel="apple-touch-icon" href="https://sum.su.or.kr:8888/Themes/main/images/logo2.png">
 		<link rel="stylesheet" href="https://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -54,43 +52,39 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 			var proxy4ChromeCORS = "";	// 크롬에서 CORS 회피를 위한 proxy. IE에서는 필요없음
 			var textArray = ['복된','은혜로운','즐거운','감사하는'];	// 평일 문구에 표시되는 형용사
 			var liturgicalYear = new Map();	// 교회력, title : 교회력 명칭, msg : 교회력날에 표시되는 형용사
-				liturgicalYear.set("2021.01.03",{title:"신년감사주일",msg:"감사하는"});
-				liturgicalYear.set("2021.02.07",{title:"이단경계주일",msg:"복된"});
-				liturgicalYear.set("2021.03.28",{title:"종려주일",msg:"감사하는"});
-				liturgicalYear.set("2021.03.29",{title:"고난주간",msg:"감사하는"});
-				liturgicalYear.set("2021.03.30",{title:"고난주간",msg:"감사하는"});
-				liturgicalYear.set("2021.03.31",{title:"고난주간",msg:"감사하는"});
-				liturgicalYear.set("2021.04.01",{title:"고난주간",msg:"감사하는"});
-				liturgicalYear.set("2021.04.02",{title:"고난주간",msg:"감사하는"});
-				liturgicalYear.set("2021.04.03",{title:"고난주간",msg:"감사하는"});
-				liturgicalYear.set("2021.04.04",{title:"부활주일",msg:"감사하는"});
-				liturgicalYear.set("2021.04.18",{title:"장애인주일",msg:"은혜로운"});
-				liturgicalYear.set("2021.05.02",{title:"어린이주일",msg:"즐거운"});
-				liturgicalYear.set("2021.05.09",{title:"어버이주일",msg:"감사하는"});
-				liturgicalYear.set("2021.05.23",{title:"성령강림절",msg:"감사하는"});
-				liturgicalYear.set("2021.06.07",{title:"저희 집이 이사하는 날",msg:"은혜 속에서 이사 무사히 마치기를, 새로운 곳에서 더 큰 은혜 받을 수 있도록 중보기도를 부탁드립니다. 감사하는"});
-				liturgicalYear.set("2021.06.20",{title:"순교자기념주일",msg:"감사하는"});
-				liturgicalYear.set("2021.06.21",{title:"순교자기념주간",msg:"감사하는"});
-				liturgicalYear.set("2021.06.22",{title:"순교자기념주간",msg:"감사하는"});
-				liturgicalYear.set("2021.06.23",{title:"순교자기념주간",msg:"감사하는"});
-				liturgicalYear.set("2021.06.24",{title:"순교자기념주간",msg:"감사하는"});
-				liturgicalYear.set("2021.06.25",{title:"순교자기념주간",msg:"감사하는"});
-				liturgicalYear.set("2021.06.26",{title:"순교자기념주간",msg:"감사하는"});
-				liturgicalYear.set("2021.07.04",{title:"맥추감사주일",msg:"감사하는"});
-				liturgicalYear.set("2021.09.05",{title:"이단경계주일",msg:"복된"});
-				liturgicalYear.set("2021.10.31",{title:"종교개혁주일",msg:"은혜로운"});
-				liturgicalYear.set("2021.11.21",{title:"추수감사주일",msg:"감사하는"});
-				liturgicalYear.set("2021.12.12",{title:"성서주일",msg:"감사하는"});
-				liturgicalYear.set("2021.12.25",{title:"성탄절",msg:"복된"});
-				liturgicalYear.set("2021.12.31",{title:"송구영신예배",msg:"감사하는"});
-
-				liturgicalYear.set("2021.01.01",{title:"새해 첫날",msg:"복된"});
-				liturgicalYear.set("2021.02.12",{title:"설날",msg:"즐겁고 복된"});
-				liturgicalYear.set("2021.03.01",{title:"삼일절",msg:"호국 영령들을 기리는"});
-				liturgicalYear.set("2021.06.06",{title:"현충일",msg:"호국 영령들을 기리는"});
-				liturgicalYear.set("2021.08.15",{title:"광복절",msg:"순국 선열들의 숭고한 애국정신을 기리는"});
-				liturgicalYear.set("2021.09.21",{title:"추석",msg:"즐겁고 복된"});
-
+				liturgicalYear.set("2022.01.02",{title:"신년감사주일",msg:"감사하는"});
+				liturgicalYear.set("2022.02.06",{title:"이단경계주일",msg:"복된"});
+				liturgicalYear.set("2022.04.10",{title:"종려주일",msg:"감사하는"});
+				liturgicalYear.set("2022.04.11",{title:"고난주간",msg:"감사하는"});
+				liturgicalYear.set("2022.04.12",{title:"고난주간",msg:"감사하는"});
+				liturgicalYear.set("2022.04.13",{title:"고난주간",msg:"감사하는"});
+				liturgicalYear.set("2022.04.14",{title:"고난주간",msg:"감사하는"});
+				liturgicalYear.set("2022.04.15",{title:"고난주간",msg:"감사하는"});
+				liturgicalYear.set("2022.04.16",{title:"고난주간",msg:"감사하는"});
+				liturgicalYear.set("2022.04.17",{title:"부활주일이자 장애인주일",msg:"감사하는"});
+				liturgicalYear.set("2022.05.01",{title:"어린이주일",msg:"즐거운"});
+				liturgicalYear.set("2022.05.08",{title:"어버이주일",msg:"감사하는"});
+				liturgicalYear.set("2022.06.05",{title:"성령강림절",msg:"감사하는"});
+				liturgicalYear.set("2022.06.19",{title:"순교자기념주일",msg:"감사하는"});
+				liturgicalYear.set("2022.06.20",{title:"순교자기념주간",msg:"감사하는"});
+				liturgicalYear.set("2022.06.21",{title:"순교자기념주간",msg:"감사하는"});
+				liturgicalYear.set("2022.06.22",{title:"순교자기념주간",msg:"감사하는"});
+				liturgicalYear.set("2022.06.23",{title:"순교자기념주간",msg:"감사하는"});
+				liturgicalYear.set("2022.06.24",{title:"순교자기념주간",msg:"감사하는"});
+				liturgicalYear.set("2022.06.25",{title:"순교자기념주간",msg:"감사하는"});
+				liturgicalYear.set("2022.07.03",{title:"맥추감사주일",msg:"감사하는"});
+				liturgicalYear.set("2022.09.04",{title:"이단경계주일",msg:"복된"});
+				liturgicalYear.set("2022.10.30",{title:"종교개혁주일",msg:"은혜로운"});
+				liturgicalYear.set("2022.11.20",{title:"추수감사주일",msg:"감사하는"});
+				liturgicalYear.set("2022.12.11",{title:"성서주일",msg:"감사하는"});
+				liturgicalYear.set("2022.12.25",{title:"성탄절",msg:"복된"});
+				liturgicalYear.set("2022.12.31",{title:"송구영신예배",msg:"감사하는"});
+				liturgicalYear.set("2022.01.01",{title:"새해 첫날",msg:"복된"});
+				liturgicalYear.set("2022.02.01",{title:"설날",msg:"즐겁고 복된"});
+				liturgicalYear.set("2022.03.01",{title:"삼일절",msg:"호국 영령들을 기리는"});
+				liturgicalYear.set("2022.06.06",{title:"현충일",msg:"호국 영령들을 기리는"});
+				liturgicalYear.set("2022.08.15",{title:"광복절",msg:"순국 선열들의 숭고한 애국정신을 기리는"});
+				liturgicalYear.set("2022.09.10",{title:"추석",msg:"즐겁고 복된"});
 			function getDateInfo() {
 				$.ajax( {
 					type:'POST',
@@ -241,18 +235,22 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 
 				getDateInfo();
 			}
+			function requestProxy() {
+				// http://cors-anywhere.herokuapp.com/corsdemo
+				window.open('http://cors-anywhere.herokuapp.com/corsdemo','PROXY','width=320,height=250');
+				// 프락시임시 오픈 요청 후 프락시 호출해야 동작함
+			}
 			function init(diff) {
 				var isChrome = window.navigator.userAgent.indexOf('Chrome') > 0;
 				if(isChrome) {
-//					proxy4ChromeCORS = "https://cors-anywhere.herokuapp.com/";
+					// requestProxy()에서 herokuapp의 임시서버를 사용함
+					proxy4ChromeCORS = "https://cors-anywhere.herokuapp.com/";
+					proxy4ChromeCORS = "http://cors-anywhere.herokuapp.com/";
+//					proxy4ChromeCORS = "https://robwu.nl/cors-anywhere.html/";
+//					proxy4ChromeCORS = "https://cors-proxy.htmldriven.com/?url=";
 // cors-anywhere.herokuapp.com 동작 안해서 cors.bridged.cc로 교체
 //					proxy4ChromeCORS = "https://cors.bridged.cc/";
-					proxy4ChromeCORS = "https://yacdn.org/serve/";
-//					proxy4ChromeCORS = "https://api.allorigins.win/raw?url=";
-//					proxy4ChromeCORS = "http://alloworigin.com/get?url=";
-//					proxy4ChromeCORS = "http://www.whateverorigin.org/get?url=";
-//					proxy4ChromeCORS = "https://thingproxy.freeboard.io/fetch/";
-//					proxy4ChromeCORS = "https://cors-proxy.htmldriven.com/?url=";
+//alert(proxy4ChromeCORS)
 				}
 
 				if(diff) {
@@ -357,6 +355,7 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 		<input type=text class='datepicker' id='bibleDate' value=''><input type=button value='GO' onclick=init()>
 		<a href="#" onClick=init('next')><i class="fas fa-arrow-right"></i></a>
 		<a href="#" onClick=init('today')><i class="fas fa-calendar-day"></i></a>
+		<button type="button" onClick=requestProxy()>Proxy</button>
 		<button type="button" onClick=contentsCopy()>Copy</button>
 		<button type="button" onClick=CopyAndNext()>Copy&Next</button>
 		<button type="button" onClick=googleTTS() style="display:none">TTS</button>
