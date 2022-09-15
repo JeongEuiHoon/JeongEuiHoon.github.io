@@ -84,7 +84,7 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 				liturgicalYear.set("2022.03.01",{title:"삼일절",msg:"호국 영령들을 기리는"});
 				liturgicalYear.set("2022.06.06",{title:"현충일",msg:"호국 영령들을 기리는"});
 				liturgicalYear.set("2022.08.15",{title:"광복절",msg:"순국 선열들의 숭고한 애국정신을 기리는"});
-				liturgicalYear.set("2022.09.10",{title:"추석",msg:"즐겁고 복된"});
+				liturgicalYear.set("2022.09.10",{title:"추석",msg:"풍성한 한가위"});
 			function getDateInfo() {
 				$.ajax( {
 					type:'POST',
@@ -104,10 +104,13 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 
 							var headerMessage = toDate[0] + "년 " + toDate[1] + "월 " + toDate[2] + "일 " + response.BibleDateGetWeek + "요일입니다. ";
 							var titleMessage = "";
-							var contentMessage = textArray[(isSunday? 1 : randomNumber)];
-							var footerMessage = ((isSunday? " 주일" : " 하루") + " 맞이하시길 바라며 오늘의 말씀을 전해드립니다.");
+							var contentMessage = textArray[(isSunday ? 1 : randomNumber)];
+							var footerMessage = ((isSunday ? " 주일" : " 하루") + " 맞이하시길 바라며 오늘의 말씀을 전해드립니다.");
 
 							if(liturgicalYear.has(response.BibleDay)) {
+								if(('추석' == liturgicalYear.get(response.BibleDay).title)) {
+									footerMessage = " 맞이하시길 바라며 오늘의 말씀을 전해드립니다.";
+								}
 								titleMessage = "오늘은 " + liturgicalYear.get(response.BibleDay).title + "입니다. ";
 								contentMessage = liturgicalYear.get(response.BibleDay).msg;
 							}
@@ -359,10 +362,10 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 		<button type="button" onClick=contentsCopy()>Copy</button>
 		<button type="button" onClick=CopyAndNext()>Copy&Next</button>
 		<button type="button" onClick=googleTTS() style="display:none">TTS</button>
-		<input type=radio name=checkedBibleType value='QT1'>개정개역
-		<input type=radio name=checkedBibleType value='QT2' checked>쉬운성경
-		<input type=radio name=checkedBibleType value='QT6'>새번역
-		<input type=radio name=checkedBibleType value='QT5'>영어
+		<input type=radio name=checkedBibleType onclick=init() value='QT1'>개정개역
+		<input type=radio name=checkedBibleType onclick=init() value='QT2' checked>쉬운성경
+		<input type=radio name=checkedBibleType onclick=init() value='QT6'>새번역
+		<input type=radio name=checkedBibleType onclick=init() value='QT5'>영어
 
 		<br>
 		<div id='Contents'>
