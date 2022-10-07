@@ -451,6 +451,12 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 
 				document.body.removeChild(element);
 			}
+
+			function downloadClick(id) {
+				if(id.checked) {
+					init();
+				}
+			}
 		</script>
 	</head>
 	<body id=myBody onload=init()>
@@ -462,7 +468,7 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 		<button type="button" onClick=contentsCopy()>Copy</button>
 		<button type="button" onClick=CopyAndNext()>Copy&Next</button>
 		<button type="button" onClick=googleTTS() style="display:none">TTS</button>
-		<input type=checkbox name=autoDownload id=autoDownload onclick=init() value='YES'>자동파일저장
+		<input type=checkbox name=autoDownload id=autoDownload onclick=downloadClick(this)>자동파일저장
 		<input type=radio name=checkedBibleType onclick=init() value='QT1'>개정개역
 		<input type=radio name=checkedBibleType onclick=init() value='QT2' checked>쉬운성경
 		<input type=radio name=checkedBibleType onclick=init() value='QT6'>새번역
