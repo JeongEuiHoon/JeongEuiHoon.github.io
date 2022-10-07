@@ -21,6 +21,27 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 성서주일 12월 11일
 성탄절 12월 25일
 송구영신예배 12월 31일
+
+※ 2023 교회절기 및 행사
+신년감사주일 1월 1일
+이단경계주일 2월 5일
+종려주일 4월 2일
+고난주간 4월 3일~8일
+부활주일 4월 9일
+장애인주일 4월 16일
+어린이주일 5월 7일
+어버이주일 5월 14일
+성령강림절 5월 28일
+순교자기념주일 6월 25일
+순교자기념주간 6월 26일~7월 1일
+맥추감사주일 7월 2일
+총회설립기념일 9월 1일
+이단경계주일 9월 3일
+종교개혁주일 10월 29일
+추수감사주일 11월 19일
+성서주일 12월 10일
+성탄절 12월 25일
+송구영신예배 12월 31일
 -->
 <html lang="en">
 	<head>
@@ -50,41 +71,75 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 			var date;	// 말씀 날짜
 			var bibleType = "QT1"; // QT1 개정 / QT2 쉬운성경 / QT6 새번역 / QT5 영어
 			var proxy4ChromeCORS = "";	// 크롬에서 CORS 회피를 위한 proxy. IE에서는 필요없음
-			var textArray = ['복된','은혜로운','즐거운','감사하는'];	// 평일 문구에 표시되는 형용사
+			var textArray = ['쉼없이 기도하는','복된','믿음으로 승리하는','평안이 넘치는','은혜로운','즐거운','감사하는'];	// 평일 문구에 표시되는 형용사
 			var liturgicalYear = new Map();	// 교회력, title : 교회력 명칭, msg : 교회력날에 표시되는 형용사
-				liturgicalYear.set("2022.01.02",{title:"신년감사주일",msg:"감사하는"});
-				liturgicalYear.set("2022.02.06",{title:"이단경계주일",msg:"복된"});
-				liturgicalYear.set("2022.04.10",{title:"종려주일",msg:"감사하는"});
-				liturgicalYear.set("2022.04.11",{title:"고난주간",msg:"감사하는"});
-				liturgicalYear.set("2022.04.12",{title:"고난주간",msg:"감사하는"});
-				liturgicalYear.set("2022.04.13",{title:"고난주간",msg:"감사하는"});
-				liturgicalYear.set("2022.04.14",{title:"고난주간",msg:"감사하는"});
-				liturgicalYear.set("2022.04.15",{title:"고난주간",msg:"감사하는"});
-				liturgicalYear.set("2022.04.16",{title:"고난주간",msg:"감사하는"});
-				liturgicalYear.set("2022.04.17",{title:"부활주일이자 장애인주일",msg:"감사하는"});
-				liturgicalYear.set("2022.05.01",{title:"어린이주일",msg:"즐거운"});
-				liturgicalYear.set("2022.05.08",{title:"어버이주일",msg:"감사하는"});
-				liturgicalYear.set("2022.06.05",{title:"성령강림절",msg:"감사하는"});
-				liturgicalYear.set("2022.06.19",{title:"순교자기념주일",msg:"감사하는"});
-				liturgicalYear.set("2022.06.20",{title:"순교자기념주간",msg:"감사하는"});
-				liturgicalYear.set("2022.06.21",{title:"순교자기념주간",msg:"감사하는"});
-				liturgicalYear.set("2022.06.22",{title:"순교자기념주간",msg:"감사하는"});
-				liturgicalYear.set("2022.06.23",{title:"순교자기념주간",msg:"감사하는"});
-				liturgicalYear.set("2022.06.24",{title:"순교자기념주간",msg:"감사하는"});
-				liturgicalYear.set("2022.06.25",{title:"순교자기념주간",msg:"감사하는"});
-				liturgicalYear.set("2022.07.03",{title:"맥추감사주일",msg:"감사하는"});
-				liturgicalYear.set("2022.09.04",{title:"이단경계주일",msg:"복된"});
-				liturgicalYear.set("2022.10.30",{title:"종교개혁주일",msg:"은혜로운"});
-				liturgicalYear.set("2022.11.20",{title:"추수감사주일",msg:"감사하는"});
-				liturgicalYear.set("2022.12.11",{title:"성서주일",msg:"감사하는"});
-				liturgicalYear.set("2022.12.25",{title:"성탄절",msg:"복된"});
-				liturgicalYear.set("2022.12.31",{title:"송구영신예배",msg:"감사하는"});
-				liturgicalYear.set("2022.01.01",{title:"새해 첫날",msg:"복된"});
-				liturgicalYear.set("2022.02.01",{title:"설날",msg:"즐겁고 복된"});
+				liturgicalYear.set("2022.01.02",{title:"신년감사주일",msg:""});
+				liturgicalYear.set("2022.02.06",{title:"이단경계주일",msg:""});
+				liturgicalYear.set("2022.04.10",{title:"종려주일",msg:""});
+				liturgicalYear.set("2022.04.11",{title:"고난주간",msg:""});
+				liturgicalYear.set("2022.04.12",{title:"고난주간",msg:""});
+				liturgicalYear.set("2022.04.13",{title:"고난주간",msg:""});
+				liturgicalYear.set("2022.04.14",{title:"고난주간",msg:""});
+				liturgicalYear.set("2022.04.15",{title:"고난주간",msg:""});
+				liturgicalYear.set("2022.04.16",{title:"고난주간",msg:""});
+				liturgicalYear.set("2022.04.17",{title:"부활주일이자 장애인주일",msg:""});
+				liturgicalYear.set("2022.05.01",{title:"어린이주일",msg:""});
+				liturgicalYear.set("2022.05.08",{title:"어버이주일",msg:""});
+				liturgicalYear.set("2022.06.05",{title:"성령강림절",msg:""});
+				liturgicalYear.set("2022.06.19",{title:"순교자기념주일",msg:""});
+				liturgicalYear.set("2022.06.20",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2022.06.21",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2022.06.22",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2022.06.23",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2022.06.24",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2022.06.25",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2022.07.03",{title:"맥추감사주일",msg:""});
+				liturgicalYear.set("2022.09.04",{title:"이단경계주일",msg:""});
+				liturgicalYear.set("2022.10.30",{title:"종교개혁주일",msg:""});
+				liturgicalYear.set("2022.11.20",{title:"추수감사주일",msg:""});
+				liturgicalYear.set("2022.12.11",{title:"성서주일",msg:""});
+				liturgicalYear.set("2022.12.25",{title:"성탄절",msg:""});
+				liturgicalYear.set("2022.12.31",{title:"송구영신예배",msg:""});
+				liturgicalYear.set("2022.01.01",{title:"새해 첫날",msg:""});
+				liturgicalYear.set("2022.02.01",{title:"설날",msg:"즐겁고 은혜로운"});
 				liturgicalYear.set("2022.03.01",{title:"삼일절",msg:"호국 영령들을 기리는"});
 				liturgicalYear.set("2022.06.06",{title:"현충일",msg:"호국 영령들을 기리는"});
 				liturgicalYear.set("2022.08.15",{title:"광복절",msg:"순국 선열들의 숭고한 애국정신을 기리는"});
-				liturgicalYear.set("2022.09.10",{title:"추석",msg:"풍성한 한가위"});
+				liturgicalYear.set("2022.09.10",{title:"추석",msg:"은혜롭고 풍성한"});
+////////////////////////////////
+				liturgicalYear.set("2023.01.01",{title:"새해 첫날이자 신년감사주일",msg:""});
+				liturgicalYear.set("2023.01.22",{title:"설날",msg:"즐겁고 은혜로운"});
+				liturgicalYear.set("2023.02.05",{title:"이단경계주일",msg:""});
+				liturgicalYear.set("2023.03.01",{title:"삼일절",msg:"호국 영령들을 기리는"});
+				liturgicalYear.set("2023.04.02",{title:"종려주일",msg:""});
+				liturgicalYear.set("2023.04.03",{title:"고난주간",msg:""});
+				liturgicalYear.set("2023.04.04",{title:"고난주간",msg:""});
+				liturgicalYear.set("2023.04.05",{title:"고난주간",msg:""});
+				liturgicalYear.set("2023.04.06",{title:"고난주간",msg:""});
+				liturgicalYear.set("2023.04.07",{title:"고난주간",msg:""});
+				liturgicalYear.set("2023.04.08",{title:"고난주간",msg:""});
+				liturgicalYear.set("2023.04.09",{title:"부활주일",msg:""});
+				liturgicalYear.set("2023.04.16",{title:"장애인주일",msg:""});
+				liturgicalYear.set("2023.05.07",{title:"어린이주일",msg:""});
+				liturgicalYear.set("2023.05.14",{title:"어버이주일",msg:""});
+				liturgicalYear.set("2023.05.28",{title:"성령강림절",msg:""});
+				liturgicalYear.set("2023.06.06",{title:"현충일",msg:"호국 영령들을 기리는"});
+				liturgicalYear.set("2023.06.25",{title:"순교자기념주일",msg:""});
+				liturgicalYear.set("2023.06.26",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2023.06.27",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2023.06.28",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2023.06.29",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2023.06.30",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2023.07.01",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2023.07.02",{title:"맥추감사주일",msg:""});
+				liturgicalYear.set("2023.08.15",{title:"광복절",msg:"순국 선열들의 숭고한 애국정신을 기리는"});
+				liturgicalYear.set("2023.09.03",{title:"이단경계주일",msg:""});
+				liturgicalYear.set("2023.09.29",{title:"추석",msg:"은혜롭고 풍성한"});
+				liturgicalYear.set("2023.10.29",{title:"종교개혁주일",msg:""});
+				liturgicalYear.set("2023.11.19",{title:"추수감사주일",msg:""});
+				liturgicalYear.set("2023.12.10",{title:"성서주일",msg:""});
+				liturgicalYear.set("2023.12.25",{title:"성탄절",msg:""});
+				liturgicalYear.set("2023.12.31",{title:"송구영신예배",msg:""});
 			function getDateInfo() {
 				$.ajax( {
 					type:'POST',
@@ -99,21 +154,27 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 							$('#bible_date').append(response.BibleDay + "(" + response.BibleDateGetWeek + ")");
 
 							var toDate = response.BibleDay.split(".");
-							var isSunday = ('일' == response.BibleDateGetWeek);
+							var isSunday = false;
+							var isChuseok = false;
 							var randomNumber = Math.floor(Math.random()*textArray.length);
 
 							var headerMessage = toDate[0] + "년 " + toDate[1] + "월 " + toDate[2] + "일 " + response.BibleDateGetWeek + "요일입니다. ";
 							var titleMessage = "";
-							var contentMessage = textArray[(isSunday ? 1 : randomNumber)];
-							var footerMessage = ((isSunday ? " 주일" : " 하루") + " 맞이하시길 바라며 오늘의 말씀을 전해드립니다.");
+							var contentMessage = "";
 
 							if(liturgicalYear.has(response.BibleDay)) {
-								if(('추석' == liturgicalYear.get(response.BibleDay).title)) {
-									footerMessage = " 맞이하시길 바라며 오늘의 말씀을 전해드립니다.";
-								}
+								isChuseok = ('추석' == liturgicalYear.get(response.BibleDay).title);
 								titleMessage = "오늘은 " + liturgicalYear.get(response.BibleDay).title + "입니다. ";
 								contentMessage = liturgicalYear.get(response.BibleDay).msg;
+								contentMessage == "" ? textArray[(isSunday ? 1 : randomNumber)] : contentMessage;
 							}
+							else {
+								isSunday = ('일' == response.BibleDateGetWeek);
+								titleMessage = "";
+								contentMessage = textArray[(isSunday ? 1 : randomNumber)];
+							}
+							var footerMessage = (isSunday ? " 주일" : (isChuseok ? " 한가위" : " 하루")) + " 맞이하시길 바라며 오늘의 말씀을 전해드립니다.";
+
 							$('#to_date').html(headerMessage+titleMessage+contentMessage+footerMessage);
 
 							getHeader();
@@ -203,34 +264,39 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 					success:function(response) {
 						if(response != null) {
 							var str = "";
-								// 해설
-								if((response.Qt_Brf != '') && (response.Qt_Brf != null)) {
-									$('#Qt_Brf').append(response.Qt_Brf.trim());
-								}
-								// 하나님은 어떤 분입니까?
-								if((response.Qt_a1 != '') && (response.Qt_a1 != null)) {
-									$('#Qt_q1_str').html('['+response.Qt_q1_str+']<br>');
-									$('#Qt_q1_str').append(response.Qt_a1.trim());
-								}
-								// 내게 주시는 교훈은 무엇입니까?
-								if((response.Qt_a2 != '') && (response.Qt_a2 != null)) {
-									$('#Qt_q2_str').html('['+response.Qt_q2_str+']<br>');
-									$('#Qt_q2_str').append(response.Qt_a2.trim());
-								}
-/*								// 기도
-								if((response.Qt_a3 != '') & (response.Qt_a3 != null)) {
-									$('#Qt_q3_str').html('['+response.Qt_q3_str+']<br>');
-									$('#Qt_q3_str').append(response.Qt_a3.trim());
-								}
+							// 해설
+							if((response.Qt_Brf != '') && (response.Qt_Brf != null)) {
+								$('#Qt_Brf').append(response.Qt_Brf.trim());
+							}
+							// 하나님은 어떤 분입니까?
+							if((response.Qt_a1 != '') && (response.Qt_a1 != null)) {
+								$('#Qt_q1_str').html('['+response.Qt_q1_str+']<br>');
+								$('#Qt_q1_str').append(response.Qt_a1.trim());
+							}
+							// 내게 주시는 교훈은 무엇입니까?
+							if((response.Qt_a2 != '') && (response.Qt_a2 != null)) {
+								$('#Qt_q2_str').html('['+response.Qt_q2_str+']<br>');
+								$('#Qt_q2_str').append(response.Qt_a2.trim());
+							}
+/*							// 기도
+							if((response.Qt_a3 != '') & (response.Qt_a3 != null)) {
+								$('#Qt_q3_str').html('['+response.Qt_q3_str+']<br>');
+								$('#Qt_q3_str').append(response.Qt_a3.trim());
+							}
 */
-								$('#end_str').append('아멘!');
-//								startDate = new Date(startDate.setDate(startDate.getDate() + 1)); //date increase by 1
+							$('#end_str').append('아멘!');
+//							startDate = new Date(startDate.setDate(startDate.getDate() + 1)); //date increase by 1
+							if($('#autoDownload').is(':checked')) {
+								if(window.navigator.userAgent.indexOf('Trident') < 0) {	// IE가 아니라면
+									download(date.replace(/-/g, ""), getContents())
+								}
+							}
 						}
 					},
 					error:function (err) {
 						var err1 = err;
 						}
-					});
+				});
 			}
 			function getBible() {
 //				startDate = new Date("2019-03-05");// startDate = new Date();
@@ -242,12 +308,14 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 				// http://cors-anywhere.herokuapp.com/corsdemo
 				window.open('http://cors-anywhere.herokuapp.com/corsdemo','PROXY','width=320,height=250');
 				// 프락시임시 오픈 요청 후 프락시 호출해야 동작함
+				proxy4ChromeCORS = "https://cors-anywhere.herokuapp.com/";
+				$('#ProxyButton').html("Proxy(Anywhere)");
 			}
 			function init(diff) {
 				var isChrome = window.navigator.userAgent.indexOf('Chrome') > 0;
 				if(isChrome) {
 					// requestProxy()에서 herokuapp의 임시서버를 사용함
-					proxy4ChromeCORS = "https://cors-anywhere.herokuapp.com/";
+//					proxy4ChromeCORS = "https://cors-anywhere.herokuapp.com/";
 //					proxy4ChromeCORS = "http://cors-anywhere.herokuapp.com/";
 //					proxy4ChromeCORS = "https://robwu.nl/cors-anywhere.html/";
 //					proxy4ChromeCORS = "https://cors-proxy.htmldriven.com/?url=";
@@ -293,7 +361,7 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 				getBible();
 			}
 
-			function contentsCopy() {
+			function getContents() {
 				var copyDivArea = document.getElementById("Contents");
 				var copyText = copyDivArea.innerText;
 
@@ -310,6 +378,11 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 						copyText = copyText.replace(/\n\n\n/g, "\n\n");//두개의 행바꿈을 하나로
 					}
 				}
+				return copyText;
+			}
+
+			function contentsCopy() {
+				var copyText = getContents();
 
 				var $temp = $("<textarea id='a1'>");
 				$("body").append($temp);
@@ -329,7 +402,22 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 					type:'POST',
 					contentType:"application/json;charset=utf-8",
 					url:"https://texttospeech.googleapis.com/v1beta1/text:synthesize",
-					data:"{'audioConfig':{'audioEncoding': 'LINEAR16', 'pitch': 0, 'speakingRate': 1 },'input':{'text':'안녕하세요'},'voice':{'languageCode':'ko-KR','name':'ko-KR-Wavenet-B'}}",
+					data:{
+						'audioConfig':{
+							  'audioEncoding': 'LINEAR16'
+							  //'audioEncoding': 'MP3'
+							, 'pitch': 0
+							, 'speakingRate': 1 
+						},
+						'input':{
+							'text':'안녕하세요'
+						},
+						'voice':{
+							  'languageCode':'ko-KR'
+							, 'name':'ko-KR-Wavenet-B'
+							//, 'ssmlGender':'FEMALE'
+						}
+					},
 					dataType:'JSON',
 					success:function(response) {
 						var err1 = err;
@@ -337,7 +425,7 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 					error:function (err) {
 						var err1 = err;
 					}
-					});
+				});
 */
 			}
 
@@ -351,6 +439,18 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 				return !isNotEmpty(_str);
 			}
 
+			function download(filename, text) {
+				let element = document.createElement('a');
+				element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+				element.setAttribute('download', filename);
+
+				element.style.display = 'none';
+				document.body.appendChild(element);
+
+				element.click();
+
+				document.body.removeChild(element);
+			}
 		</script>
 	</head>
 	<body id=myBody onload=init()>
@@ -358,10 +458,11 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 		<input type=text class='datepicker' id='bibleDate' value=''><input type=button value='GO' onclick=init()>
 		<a href="#" onClick=init('next')><i class="fas fa-arrow-right"></i></a>
 		<a href="#" onClick=init('today')><i class="fas fa-calendar-day"></i></a>
-		<button type="button" onClick=requestProxy()>Proxy</button>
+		<button type="button" onClick=requestProxy() id="ProxyButton">Proxy</button>
 		<button type="button" onClick=contentsCopy()>Copy</button>
 		<button type="button" onClick=CopyAndNext()>Copy&Next</button>
 		<button type="button" onClick=googleTTS() style="display:none">TTS</button>
+		<input type=checkbox name=autoDownload id=autoDownload onclick=init() value='YES'>자동파일저장
 		<input type=radio name=checkedBibleType onclick=init() value='QT1'>개정개역
 		<input type=radio name=checkedBibleType onclick=init() value='QT2' checked>쉬운성경
 		<input type=radio name=checkedBibleType onclick=init() value='QT6'>새번역
