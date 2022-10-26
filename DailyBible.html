@@ -166,7 +166,7 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 								isChuseok = ('추석' == liturgicalYear.get(response.BibleDay).title);
 								titleMessage = "오늘은 " + liturgicalYear.get(response.BibleDay).title + "입니다. ";
 								contentMessage = liturgicalYear.get(response.BibleDay).msg;
-								contentMessage == "" ? textArray[(isSunday ? 1 : randomNumber)] : contentMessage;
+								contentMessage = (contentMessage == "" ? textArray[(isSunday ? 1 : randomNumber)] : contentMessage);
 							}
 							else {
 								isSunday = ('일' == response.BibleDateGetWeek);
