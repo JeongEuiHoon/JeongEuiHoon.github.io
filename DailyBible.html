@@ -157,7 +157,7 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 								titleMessage = "";
 								contentMessage = textArray[(isSunday ? 1 : randomNumber)];
 							}
-							var footerMessage = (isSunday ? " 주일" : (isChuseok ? " 한가위" : " 하루")) + " 맞이하시길 바라며 오늘의 말씀을 전해드립니다. 더 많은 소식은 <a href='https://sum.su.or.kr:8888/bible/today'>매일성경</a>(https://sum.su.or.kr:8888/bible/today)에서 보실 수 있습니다.";
+							var footerMessage = (isSunday ? " 주일" : (isChuseok ? " 한가위" : " 하루")) + " 맞이하시길 바라며 오늘의 말씀을 전해드립니다.";
 
 							$('#to_date').html(headerMessage+titleMessage+contentMessage+footerMessage);
 
@@ -269,6 +269,11 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 							}
 */
 							$('#end_str').append('아멘!');
+							$('#end_str').append('<br><br>');
+
+							$('#end_str').append('더 많은 소식은 <a href=\'https://sum.su.or.kr:8888/bible/today\'>매일성경</a>(https://sum.su.or.kr:8888/bible/today)에서 보실 수 있습니다.');
+							$('#end_str').append('<br>');
+							$('#end_str').append('<a href=\'https://meditation.su.or.kr/meditation_mp3/'+date.slice(0,4)+'/'+date.replace(/-/g, "")+'.mp3\'>여기</a>(https://meditation.su.or.kr/meditation_mp3/'+date.slice(0,4)+'/'+date.replace(/-/g, "")+'.mp3)를 누르시면 오늘의 말씀을 음성으로 들을 수 있습니다.');
 //							startDate = new Date(startDate.setDate(startDate.getDate() + 1)); //date increase by 1
 							if($('#autoDownload').is(':checked')) {
 								if(window.navigator.userAgent.indexOf('Trident') < 0) {	// IE가 아니라면
@@ -283,9 +288,6 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 				});
 			}
 			function getBible() {
-//				startDate = new Date("2019-03-05");// startDate = new Date();
-//				endDate = new Date(startDate.setDate(startDate.getDate() + 7));
-
 				getDateInfo();
 			}
 			function requestProxy() {
@@ -386,7 +388,7 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 			function setVoiceList() {
 				voices = window.speechSynthesis.getVoices();
 			}
-//			setVoiceList();
+			setVoiceList();
 			function speech(txt) {
 				if (window.speechSynthesis.onvoiceschanged !== undefined) {
 					window.speechSynthesis.onvoiceschanged = setVoiceList;
@@ -399,6 +401,25 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 					return;
 				}
 				var lang = 'ko-KR';
+
+				txt = "";
+				var title = $('#subject').text();		// 제목
+				if(title != "") {
+					txt += (" 제목." + title + ".");
+				}
+				var brief = $('#Qt_Brf').text();		// 해설
+				if(brief != "") {
+					txt += (" 해설 " + brief + ".");
+				}
+				var qtq1 = $('#Qt_q1_str').text();		// 하나님은 어떤 분입니까?
+				if(qtq1 != "") {
+					txt += qtq1;
+				}
+				var qtq2 = $('#Qt_q2_str').text();		// 내게 주시는 교훈은 무엇입니까?
+				if(qtq2 != "") {
+					txt += qtq2;
+				}
+
 				var utterThis = new SpeechSynthesisUtterance(txt);
 				utterThis.onend = function (event) {
 					console.log('end');
@@ -409,7 +430,7 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 				var voiceFound = false;
 				for(var i = 0; i < voices.length ; i++) {
 					if(voices[i].lang.indexOf(lang) >= 0 || voices[i].lang.indexOf(lang.replace('-', '_')) >= 0) {
-						utterThis.voice = voices[i];	// "Microsoft Heami - Korean (Korean)", "Google 한국의"
+						utterThis.voice = voices[i];	// "Microsoft Heami - Korean (Korean)" / "Google 한국의". 두개의 음성이 지원됨.
 						voiceFound = true;
 						break;
 					}
@@ -428,7 +449,9 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 				$.ajax( {
 					type:'POST',
 					contentType:"application/json;charset=utf-8",
-					url:"https://texttospeech.googleapis.com/v1beta1/text:synthesize",
+//					url:"https://texttospeech.googleapis.com/v1beta1/text:synthesize",
+					url:"https://texttospeech.googleapis.com/v1/text:synthesize",
+//					authorization:"Bearer GOOGLE_CLOUD_API_KEY//유료결제해야함",
 					data:{
 						'audioConfig':{
 							  'audioEncoding': 'LINEAR16'
@@ -491,11 +514,11 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 		<input type=text class='datepicker' id='bibleDate' value=''><input type=button value='GO' onclick=init()>
 		<a href="#" onClick=init('next')><i class="fas fa-arrow-right"></i></a>
 		<a href="#" onClick=init('today')><i class="fas fa-calendar-day"></i></a>
-		<button type="button" onClick=requestProxy() id="ProxyButton">Proxy</button>
+		<button type="button" onClick=requestProxy() id="ProxyButton">Proxy(연결안됨)</button>
 		<button type="button" onClick=contentsCopy()>Copy</button>
 		<button type="button" onClick=CopyAndNext()>Copy&Next</button>
 		<button type="button" onClick=googleTTS() style="display:none">TTS</button>
-		<button type="button" onClick=speech("안녕하세요.") style="display:inline">읽어주기</button>
+		<button type="button" onClick=speech("헬로우.안녕하세요.") style="display:inline">읽어주기</button>
 		<input type=checkbox name=autoDownload id=autoDownload onclick=downloadClick(this)>자동파일저장
 		<input type=radio name=checkedBibleType onclick=init() value='QT1'>개정개역
 		<input type=radio name=checkedBibleType onclick=init() value='QT2' checked>쉬운성경
