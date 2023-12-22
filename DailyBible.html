@@ -509,6 +509,16 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 					init();
 				}
 			}
+	function fn_smsShare() {
+		var sBody = "안녕하세요. n"
+		+ "SMS 테스트 페이지 입니다.n"
+		+ "n"
+		+ "감사합니다.";
+
+		sBody = sBody.replace(/(n|rn)/g,"%0a");
+		location.href = "sms:?body=" + sBody;
+	}
+
 		</script>
 	</head>
 	<body id=myBody onload=init()>
@@ -526,6 +536,8 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 		<input type=radio name=checkedBibleType onclick=init() value='QT2' checked>쉬운성경
 		<input type=radio name=checkedBibleType onclick=init() value='QT6'>새번역
 		<input type=radio name=checkedBibleType onclick=init() value='QT5'>영어
+
+		<button type="button" onClick=fn_smsShare()>SMS</button>
 
 		<br>
 		<div id='Contents'>
