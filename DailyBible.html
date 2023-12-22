@@ -509,16 +509,12 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 					init();
 				}
 			}
-	function fn_smsShare() {
-		var sBody = "안녕하세요. n"
-		+ "SMS 테스트 페이지 입니다.n"
-		+ "n"
-		+ "감사합니다.";
 
-		sBody = sBody.replace(/(n|rn)/g,"%0a");
-		location.href = "sms:010-2264-7179?body=" + sBody;
-	}
-
+			function fn_smsShare() {
+				var textBody = getContents();
+				textBody = textBody.replace(/(n|rn)/g,"%0a");
+				location.href = "sms:010-2264-7179?body=" + textBody;
+			}
 		</script>
 	</head>
 	<body id=myBody onload=init()>
@@ -527,6 +523,7 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 		<a href="#" onClick=init('next')><i class="fas fa-arrow-right"></i></a>
 		<a href="#" onClick=init('today')><i class="fas fa-calendar-day"></i></a>
 		<button type="button" onClick=requestProxy() id="ProxyButton">Proxy(연결안됨)</button>
+		<button type="button" onClick=fn_smsShare()>SMS보내기</button>
 		<button type="button" onClick=contentsCopy()>Copy</button>
 		<button type="button" onClick=CopyAndNext()>Copy&Next</button>
 		<button type="button" onClick=googleTTS() style="display:none">TTS</button>
@@ -536,9 +533,6 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 		<input type=radio name=checkedBibleType onclick=init() value='QT2' checked>쉬운성경
 		<input type=radio name=checkedBibleType onclick=init() value='QT6'>새번역
 		<input type=radio name=checkedBibleType onclick=init() value='QT5'>영어
-
-		<button type="button" onClick=fn_smsShare()>SMS</button>
-
 		<br>
 		<div id='Contents'>
 		<div id='to_date'></div><br>
