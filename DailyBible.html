@@ -1,4 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  <!doctype html>
 <!-- 
 https://jeongeuihoon.github.io/DailyBible.html
 ---------
@@ -8,24 +19,23 @@ https://meditation.su.or.kr/meditation_mp3/2023/20230307.mp3
 <!-- 
 http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 
-※ 2023 교회절기 및 행사
-신년감사주일 1월 1일
-이단경계주일 2월 5일
-종려주일 4월 2일
-고난주간 4월 3일~8일
-부활주일 4월 9일
-장애인주일 4월 16일
-어린이주일 5월 7일
-어버이주일 5월 14일
-성령강림절 5월 28일
-순교자기념주일 6월 25일
-순교자기념주간 6월 26일~7월 1일
-맥추감사주일 7월 2일
+신년감사주일 1월 7일
+이단경계주일 2월 4일
+종려주일 3월 24일
+고난주간 3월 25일~30일
+부활주일 3월 31일
+장애인주일 4월 21일
+어린이주일 5월 5일
+어버이주일 5월 12일
+성령강림절 5월 19일
+순교자기념주일 6월 23일
+순교자기념주간 6월 24일~29일
+맥추감사주일 7월 7일
 총회설립기념일 9월 1일
-이단경계주일 9월 3일
-종교개혁주일 10월 29일
-추수감사주일 11월 19일
-성서주일 12월 10일
+이단경계주일 9월 1일
+종교개혁주일 10월 27일
+추수감사주일 11월 17일
+성서주일 12월 8일
 성탄절 12월 25일
 송구영신예배 12월 31일
 -->
@@ -59,73 +69,38 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 			var proxy4ChromeCORS = "";	// 크롬에서 CORS 회피를 위한 proxy. IE에서는 필요없음
 			var textArray = ['쉼없이 기도하는','복된','믿음으로 승리하는','평안이 넘치는','은혜로운','즐거운','감사하는'];	// 평일 문구에 표시되는 형용사
 			var liturgicalYear = new Map();	// 교회력, title : 교회력 명칭, msg : 교회력날에 표시되는 형용사
-				liturgicalYear.set("2022.01.02",{title:"신년감사주일",msg:""});
-				liturgicalYear.set("2022.02.06",{title:"이단경계주일",msg:""});
-				liturgicalYear.set("2022.04.10",{title:"종려주일",msg:""});
-				liturgicalYear.set("2022.04.11",{title:"고난주간",msg:""});
-				liturgicalYear.set("2022.04.12",{title:"고난주간",msg:""});
-				liturgicalYear.set("2022.04.13",{title:"고난주간",msg:""});
-				liturgicalYear.set("2022.04.14",{title:"고난주간",msg:""});
-				liturgicalYear.set("2022.04.15",{title:"고난주간",msg:""});
-				liturgicalYear.set("2022.04.16",{title:"고난주간",msg:""});
-				liturgicalYear.set("2022.04.17",{title:"부활주일이자 장애인주일",msg:""});
-				liturgicalYear.set("2022.05.01",{title:"어린이주일",msg:""});
-				liturgicalYear.set("2022.05.08",{title:"어버이주일",msg:""});
-				liturgicalYear.set("2022.06.05",{title:"성령강림절",msg:""});
-				liturgicalYear.set("2022.06.19",{title:"순교자기념주일",msg:""});
-				liturgicalYear.set("2022.06.20",{title:"순교자기념주간",msg:""});
-				liturgicalYear.set("2022.06.21",{title:"순교자기념주간",msg:""});
-				liturgicalYear.set("2022.06.22",{title:"순교자기념주간",msg:""});
-				liturgicalYear.set("2022.06.23",{title:"순교자기념주간",msg:""});
-				liturgicalYear.set("2022.06.24",{title:"순교자기념주간",msg:""});
-				liturgicalYear.set("2022.06.25",{title:"순교자기념주간",msg:""});
-				liturgicalYear.set("2022.07.03",{title:"맥추감사주일",msg:""});
-				liturgicalYear.set("2022.09.04",{title:"이단경계주일",msg:""});
-				liturgicalYear.set("2022.10.30",{title:"종교개혁주일",msg:""});
-				liturgicalYear.set("2022.11.20",{title:"추수감사주일",msg:""});
-				liturgicalYear.set("2022.12.11",{title:"성서주일",msg:""});
-				liturgicalYear.set("2022.12.25",{title:"성탄절",msg:""});
-				liturgicalYear.set("2022.12.31",{title:"송구영신예배",msg:""});
-				liturgicalYear.set("2022.01.01",{title:"새해 첫날",msg:""});
-				liturgicalYear.set("2022.02.01",{title:"설날",msg:"즐겁고 은혜로운"});
-				liturgicalYear.set("2022.03.01",{title:"삼일절",msg:"호국 영령들을 기리는"});
-				liturgicalYear.set("2022.06.06",{title:"현충일",msg:"호국 영령들을 기리는"});
-				liturgicalYear.set("2022.08.15",{title:"광복절",msg:"순국 선열들의 숭고한 애국정신을 기리는"});
-				liturgicalYear.set("2022.09.10",{title:"추석",msg:"은혜롭고 풍성한"});
-////////////////////////////////
-				liturgicalYear.set("2023.01.01",{title:"새해 첫날이자 신년감사주일",msg:""});
-				liturgicalYear.set("2023.01.22",{title:"설날",msg:"즐겁고 은혜로운"});
-				liturgicalYear.set("2023.02.05",{title:"이단경계주일",msg:""});
-				liturgicalYear.set("2023.03.01",{title:"삼일절",msg:"호국 영령들을 기리는"});
-				liturgicalYear.set("2023.04.02",{title:"종려주일",msg:""});
-				liturgicalYear.set("2023.04.03",{title:"고난주간",msg:""});
-				liturgicalYear.set("2023.04.04",{title:"고난주간",msg:""});
-				liturgicalYear.set("2023.04.05",{title:"고난주간",msg:""});
-				liturgicalYear.set("2023.04.06",{title:"고난주간",msg:""});
-				liturgicalYear.set("2023.04.07",{title:"고난주간",msg:""});
-				liturgicalYear.set("2023.04.08",{title:"고난주간",msg:""});
-				liturgicalYear.set("2023.04.09",{title:"부활주일",msg:""});
-				liturgicalYear.set("2023.04.16",{title:"장애인주일",msg:""});
-				liturgicalYear.set("2023.05.07",{title:"어린이주일",msg:""});
-				liturgicalYear.set("2023.05.14",{title:"어버이주일",msg:""});
-				liturgicalYear.set("2023.05.28",{title:"성령강림절",msg:""});
-				liturgicalYear.set("2023.06.06",{title:"현충일",msg:"호국 영령들을 기리는"});
-				liturgicalYear.set("2023.06.25",{title:"순교자기념주일",msg:""});
-				liturgicalYear.set("2023.06.26",{title:"순교자기념주간",msg:""});
-				liturgicalYear.set("2023.06.27",{title:"순교자기념주간",msg:""});
-				liturgicalYear.set("2023.06.28",{title:"순교자기념주간",msg:""});
-				liturgicalYear.set("2023.06.29",{title:"순교자기념주간",msg:""});
-				liturgicalYear.set("2023.06.30",{title:"순교자기념주간",msg:""});
-				liturgicalYear.set("2023.07.01",{title:"순교자기념주간",msg:""});
-				liturgicalYear.set("2023.07.02",{title:"맥추감사주일",msg:""});
-				liturgicalYear.set("2023.08.15",{title:"광복절",msg:"순국 선열들의 숭고한 애국정신을 기리는"});
-				liturgicalYear.set("2023.09.03",{title:"이단경계주일",msg:""});
-				liturgicalYear.set("2023.09.29",{title:"추석",msg:"은혜롭고 풍성한"});
-				liturgicalYear.set("2023.10.29",{title:"종교개혁주일",msg:""});
-				liturgicalYear.set("2023.11.19",{title:"추수감사주일",msg:""});
-				liturgicalYear.set("2023.12.10",{title:"성서주일",msg:""});
-				liturgicalYear.set("2023.12.25",{title:"성탄절",msg:""});
-				liturgicalYear.set("2023.12.31",{title:"송구영신예배",msg:""});
+				liturgicalYear.set("2024.01.01",{title:"새해 첫날이자 신년감사주일",msg:""});
+				liturgicalYear.set("2024.02.04",{title:"이단경계주일",msg:""});
+				liturgicalYear.set("2024.03.01",{title:"삼일절",msg:"호국 영령들을 기리는"});
+				liturgicalYear.set("2024.03.24",{title:"종려주일",msg:"<br>종려주일은 예수님께서 십자가 죽음을 위해 예루살렘에 입성하신 날을 기념하는 절기(찬송가 교독문 129번)입니다. 예수께서 나귀를 타시고 예루살렘에 입성하실 때에 많은 사람들이 종려나무 가지를 흔들며 호산나를 부르며 환영한 데서 붙여진 이름으로(요12:13). 이 날은 부활주일 전 주일로서(사순절 다섯 번째 주일), 다음날부터 고난주간이 시작됩니다.<br>은혜로운"});
+				liturgicalYear.set("2024.03.25",{title:"고난주간",msg:"<br>고난주간은 예수 그리스도의 고난과 죽음을 기념하는 절기로 주님이 지신 십자가의 구속 역사를 선포하고 그 고초와 죽음을 통해 죄인들을 구원하신 그분의 사랑을 깊이 생각하면서(묵상하면서) 경건한 삶의 훈련을 쌓는 주간입니다. 종려주일에 시작하여 부활절 하루 전까지 1주간을 경건히 지키는 시간으로 일명 [수난주간/성주간(聖週間)/대주간(大週間, Great Week)]이라고도합니다.<br>고난주간 중에서도 특히 예수께서 잡히시기 전 최후의 만찬이 있었던 날을 기념하는 목요일과 주님의 십자가 죽음의 날을 기념하는 금요일에는 더더욱 세상적 즐거움을 절제하고 금식하는 전통이 이어져오고 있습니다.<br>감사하는"});
+				liturgicalYear.set("2024.03.26",{title:"고난주간",msg:"<br>고난주간은 예수 그리스도의 고난과 죽음을 기념하는 절기로 주님이 지신 십자가의 구속 역사를 선포하고 그 고초와 죽음을 통해 죄인들을 구원하신 그분의 사랑을 깊이 생각하면서(묵상하면서) 경건한 삶의 훈련을 쌓는 주간입니다. 종려주일에 시작하여 부활절 하루 전까지 1주간을 경건히 지키는 시간으로 일명 [수난주간/성주간(聖週間)/대주간(大週間, Great Week)]이라고도합니다.<br>고난주간 중에서도 특히 예수께서 잡히시기 전 최후의 만찬이 있었던 날을 기념하는 목요일과 주님의 십자가 죽음의 날을 기념하는 금요일에는 더더욱 세상적 즐거움을 절제하고 금식하는 전통이 이어져오고 있습니다.<br>감사하는"});
+				liturgicalYear.set("2024.03.27",{title:"고난주간",msg:"<br>고난주간은 예수 그리스도의 고난과 죽음을 기념하는 절기로 주님이 지신 십자가의 구속 역사를 선포하고 그 고초와 죽음을 통해 죄인들을 구원하신 그분의 사랑을 깊이 생각하면서(묵상하면서) 경건한 삶의 훈련을 쌓는 주간입니다. 종려주일에 시작하여 부활절 하루 전까지 1주간을 경건히 지키는 시간으로 일명 [수난주간/성주간(聖週間)/대주간(大週間, Great Week)]이라고도합니다.<br>고난주간 중에서도 특히 예수께서 잡히시기 전 최후의 만찬이 있었던 날을 기념하는 목요일과 주님의 십자가 죽음의 날을 기념하는 금요일에는 더더욱 세상적 즐거움을 절제하고 금식하는 전통이 이어져오고 있습니다.<br>감사하는"});
+				liturgicalYear.set("2024.03.28",{title:"고난주간",msg:"<br>고난주간은 예수 그리스도의 고난과 죽음을 기념하는 절기로 주님이 지신 십자가의 구속 역사를 선포하고 그 고초와 죽음을 통해 죄인들을 구원하신 그분의 사랑을 깊이 생각하면서(묵상하면서) 경건한 삶의 훈련을 쌓는 주간입니다. 종려주일에 시작하여 부활절 하루 전까지 1주간을 경건히 지키는 시간으로 일명 [수난주간/성주간(聖週間)/대주간(大週間, Great Week)]이라고도합니다.<br>고난주간 중에서도 특히 예수께서 잡히시기 전 최후의 만찬이 있었던 날을 기념하는 목요일과 주님의 십자가 죽음의 날을 기념하는 금요일에는 더더욱 세상적 즐거움을 절제하고 금식하는 전통이 이어져오고 있습니다.<br>감사하는"});
+				liturgicalYear.set("2024.03.29",{title:"성금요일이자 고난주간",msg:"<br>예수님께서 세상을 위해서 자신을 희생한 성금요일입니다.<br>감사하는"});
+				liturgicalYear.set("2024.03.30",{title:"고난주간",msg:"<br>고난주간은 예수 그리스도의 고난과 죽음을 기념하는 절기로 주님이 지신 십자가의 구속 역사를 선포하고 그 고초와 죽음을 통해 죄인들을 구원하신 그분의 사랑을 깊이 생각하면서(묵상하면서) 경건한 삶의 훈련을 쌓는 주간입니다. 종려주일에 시작하여 부활절 하루 전까지 1주간을 경건히 지키는 시간으로 일명 [수난주간/성주간(聖週間)/대주간(大週間, Great Week)]이라고도합니다.<br>고난주간 중에서도 특히 예수께서 잡히시기 전 최후의 만찬이 있었던 날을 기념하는 목요일과 주님의 십자가 죽음의 날을 기념하는 금요일에는 더더욱 세상적 즐거움을 절제하고 금식하는 전통이 이어져오고 있습니다.<br>감사하는"});
+				liturgicalYear.set("2024.03.31",{title:"부활주일",msg:"부활절은 예수님이 십자가에서 돌아가시고 사흘 만에 부활하심으로 우리가 죄에서 벗어나게 된 것을 기념하는 날입니다. 감사하는"});
+				liturgicalYear.set("2024.04.21",{title:"장애인주일",msg:""});
+				liturgicalYear.set("2024.05.05",{title:"어린이주일",msg:""});
+				liturgicalYear.set("2024.05.12",{title:"어버이주일",msg:""});
+				liturgicalYear.set("2024.05.19",{title:"성령강림절",msg:"<br>부활절에서 50일째, 즉 예수님 승천일에서 10일 후 첫 일요일로, 오순절 마가의 다락방에서 성령이 사도들에게 강림한 날(행 2:1-42)을 기념하는 절기입니다. 성탄절 및 부활절과 함께 교회의 3대 축일 중 하나입니다. 특히 이날은 교회의 탄생일이라는 역사적 의미가 크기 때문에 오늘날도 서구 교회들에서는 성령강림절에 철야 예배와 세례식을 거행하는 등 다양하고 성대한 행사를 가지고 있습니다.<br>은혜로운"});
+				liturgicalYear.set("2024.06.06",{title:"현충일",msg:"호국 영령들을 기리는"});
+				liturgicalYear.set("2024.06.23",{title:"순교자기념주일",msg:""});
+				liturgicalYear.set("2024.06.24",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2024.06.25",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2024.06.26",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2024.06.27",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2024.06.28",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2024.06.29",{title:"순교자기념주간",msg:""});
+				liturgicalYear.set("2024.07.07",{title:"맥추감사주일",msg:""});
+				liturgicalYear.set("2024.08.15",{title:"광복절",msg:"순국 선열들의 숭고한 애국정신을 기리는"});
+				liturgicalYear.set("2024.09.01",{title:"이단경계주일",msg:""});
+				liturgicalYear.set("2024.09.16",{title:"추석",msg:"은혜롭고 풍성한"});
+				liturgicalYear.set("2024.10.27",{title:"종교개혁주일",msg:""});
+				liturgicalYear.set("2024.11.17",{title:"추수감사주일",msg:""});
+				liturgicalYear.set("2024.12.08",{title:"성서주일",msg:""});
+				liturgicalYear.set("2024.12.25",{title:"성탄절",msg:""});
+				liturgicalYear.set("2024.12.31",{title:"송구영신예배",msg:""});
 			function getDateInfo() {
 				$.ajax( {
 					type:'POST',
@@ -171,8 +146,28 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 					}
 				});
 			}
+			function getSubject() {
+				$.ajax({
+					type:'POST',
+					contentType:"application/json;charset=utf-8",
+					url:proxy4ChromeCORS+"https://sum.su.or.kr:8888/Ajax/Bible/BodyMatterDetail",
+					data:"{'qt_ty':'QT1','Base_de':'"+date+"'}",
+					dataType:'JSON',
+					success:function (response) {
+						if(response != null) {
+							if((response.Qt_sj != '') & (response.Qt_sj != null)) {
+								$('#subject').append(response.Qt_sj.trim());
+							}
+						}
+					},
+					error:function (err) {
+						var err1 = err;
+						}
+					});
+			}
 			function getHeader() {
 				$('#subject').html("");
+				getSubject();
 				$.ajax({
 					type:'POST',
 					contentType:"application/json;charset=utf-8",
@@ -181,9 +176,9 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 					dataType:'JSON',
 					success:function (response) {
 						if(response != null) {
-							if((response.Qt_sj != '') & (response.Qt_sj != null)) {
-								$('#subject').append(response.Qt_sj.trim());
-							}
+//							if((response.Qt_sj != '') & (response.Qt_sj != null)) {
+//								$('#subject').append(response.Qt_sj.trim());
+//							}
 
 							$('#bible_date').append(' : ');
 							$('#bible_date').append('[');
@@ -556,4 +551,6 @@ http://gapck.org/publish/notice/notice_read.asp?hno=140&BGNO=1034
 		<div id='end_str'></div>
 		</div>
 	</body>
+</html>
+ </body>
 </html>
